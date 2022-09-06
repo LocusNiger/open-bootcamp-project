@@ -1,8 +1,16 @@
 import PropTypes from "prop-types";
+import { useEffect } from "react";
 import { Task } from "../../models/task.class";
 
 /* Componente que renderiza la tarea que le pasan por prop */
 const TaskComponent = ({ task }) => {
+  /* Cada vez que se modifique una tarea, se ejecutara el useEffect */
+  useEffect(() => {
+    console.log("Created task");
+    return () => {
+      console.log(`Task: ${task.name} is going to unmount`);
+    };
+  }, [task]);
   return (
     <>
       <h2>Nombre: {task.name}</h2>
