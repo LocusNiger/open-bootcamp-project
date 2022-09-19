@@ -5,7 +5,7 @@ import { Task } from "../../models/task.class";
 import "../../styles/task.scss";
 
 /* Componente que renderiza la tarea que le pasan por prop */
-const TaskComponent = ({ task }) => {
+const TaskComponent = ({ task, complete, deleteTask }) => {
   /* Cada vez que se modifique una tarea, se ejecutara el useEffect */
   useEffect(() => {
     console.log("Created task");
@@ -43,15 +43,20 @@ const TaskComponent = ({ task }) => {
   /* Función que retorna icono dependiendo si la tarea esta completada o no */
   const taskCompletedIcon = () => {
     if (task.completed) {
-      return <i className="bi-toggle-on" style={{ color: "green", fontSize: "1rem" }}></i>;
+      return (
+        <i className="bi-toggle-on" onClick={() => complete(task)} style={{ color: "green", fontSize: "1rem" }}></i>
+      );
     } else {
-      return <i className="bi-toggle-off" style={{ color: "grey", fontSize: "1rem" }}></i>;
+      return (
+        <i className="bi-toggle-off" onClick={() => complete(task)} style={{ color: "grey", fontSize: "1rem" }}></i>
+      );
     }
   };
+
   return (
     <tr className="fw-normal border">
       <td className="border">
-        <span className="px-2">{task.name}</span>
+        <span className="px-2 task-name">{task.name}</span>
       </td>
       <td className="align-middle border">
         <span>{task.description}</span>
@@ -59,7 +64,7 @@ const TaskComponent = ({ task }) => {
       <td className="border">{taskLevelBadge()}</td>
       <td className="d-flex justify-content-around align-items-center border">
         {taskCompletedIcon()}
-        <i className="bi bi-trash" style={{ color: "tomato", fontSize: "1rem" }}></i>
+        <i className="bi bi-trash" style={{ color: "tomato", fontSize: "1rem" }} onClick={() => deleteTask(task)}></i>
       </td>
     </tr>
   );

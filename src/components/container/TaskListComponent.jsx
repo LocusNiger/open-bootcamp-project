@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { LEVELS } from "../../models/levels.enum";
 import { Task } from "../../models/task.class";
+import TaskForm from "../pure/forms/TaskForm";
 import TaskComponent from "../pure/TaskComponent";
 
 /* Componente contenedor de lista de tareas */
@@ -24,12 +25,26 @@ const TaskListComponent = () => {
     };
   }, [tasks]);
 
-  const changeState = (id) => {
-    console.log("TODO: función que cambia el estado de la tarea");
+  /* Función para marcar como completada la tarea que recibe */
+  const completeTask = (task) => {
+    const index = tasks.indexOf(task); /* busco el índice de la tarea a modificar */
+    const tempTasks = [...tasks]; /* arreglo temporal para hacer las modificaciones */
+    tempTasks[index].completed = !tempTasks[index].completed; /* cambio el atributo completed */
+    setTasks(tempTasks); /* seteo el arreglo ya modificado */
   };
+
+  /* Función para eliminar la tarea que recibe */
+  const deleteTask = (task) => {
+    console.log("Tarea eliminada");
+    const index = tasks.indexOf(task); /* busco el índice de la tarea a modificar */
+    const tempTasks = [...tasks]; /* arreglo temporal para hacer las modificaciones */
+    tempTasks.splice(index, 1); /* elimino la tarea en el arreglo temporal */
+    setTasks(tempTasks); /* seteo el arreglo ya modificado */
+  };
+
   return (
     <>
-      <div className="col-12">
+      <div className="col-12 mt-5">
         <div className="card">
           {/* card header (title) */}
           <div className="card-header p-3">
@@ -55,13 +70,13 @@ const TaskListComponent = () => {
                 </tr>
               </thead>
               <tbody>
-                {/* TODO: iterar sobre una lista de tareas */}
                 {/* Le paso por props la tarea a mostrar. TaskComponent => comp. presentacional */}
                 {tasks.map((task, index) => {
-                  return <TaskComponent key={index} task={task} />;
+                  return <TaskComponent key={index} task={task} complete={completeTask} deleteTask={deleteTask} />;
                 })}
               </tbody>
             </table>
+            <TaskForm />
           </div>
         </div>
       </div>
