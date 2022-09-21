@@ -42,6 +42,12 @@ const TaskListComponent = () => {
     setTasks(tempTasks); /* seteo el arreglo ya modificado */
   };
 
+  const addTask = (task) => {
+    const tempTasks = [...tasks];
+    tempTasks.push(task);
+    setTasks(tempTasks);
+  };
+
   return (
     <>
       <div className="col-12 mt-5">
@@ -76,7 +82,7 @@ const TaskListComponent = () => {
                 })}
               </tbody>
             </table>
-            <TaskForm />
+            <TaskForm add={addTask} />
           </div>
         </div>
       </div>
