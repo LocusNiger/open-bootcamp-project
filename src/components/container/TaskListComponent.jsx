@@ -42,6 +42,7 @@ const TaskListComponent = () => {
     setTasks(tempTasks); /* seteo el arreglo ya modificado */
   };
 
+  /* Función para agregar una nueva tarea */
   const addTask = (task) => {
     const tempTasks = [...tasks];
     tempTasks.push(task);
@@ -58,30 +59,34 @@ const TaskListComponent = () => {
           </div>
           {/* card body (content) */}
           <div className="card-body card-styles" data-mdb-perfect-scrollbar="true">
-            <table>
-              <thead>
-                <tr>
-                  <th scope="col" className="px-3 border text-center">
-                    Title
-                  </th>
-                  <th scope="col" className="px-3 border text-center">
-                    Description
-                  </th>
-                  <th scope="col" className="px-3 border text-center">
-                    Priority
-                  </th>
-                  <th scope="col" className="px-3 border text-center">
-                    Action
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                {/* Le paso por props la tarea a mostrar. TaskComponent => comp. presentacional */}
-                {tasks.map((task, index) => {
-                  return <TaskComponent key={index} task={task} complete={completeTask} deleteTask={deleteTask} />;
-                })}
-              </tbody>
-            </table>
+            {tasks.length > 0 ? (
+              <table>
+                <thead>
+                  <tr>
+                    <th scope="col" className="px-3 border text-center">
+                      Title
+                    </th>
+                    <th scope="col" className="px-3 border text-center">
+                      Description
+                    </th>
+                    <th scope="col" className="px-3 border text-center">
+                      Priority
+                    </th>
+                    <th scope="col" className="px-3 border text-center">
+                      Action
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {/* Le paso por props la tarea a mostrar. TaskComponent => comp. presentacional */}
+                  {tasks.map((task, index) => {
+                    return <TaskComponent key={index} task={task} complete={completeTask} deleteTask={deleteTask} />;
+                  })}
+                </tbody>
+              </table>
+            ) : (
+              <h4>You are up to date with your tasks!</h4>
+            )}
             <TaskForm add={addTask} />
           </div>
         </div>

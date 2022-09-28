@@ -10,6 +10,8 @@ const TaskForm = ({ add }) => {
     e.preventDefault();
     const newTask = new Task(nameRef.current.value, descriptionRef.current.value, false, levelRef.current.value);
     add(newTask);
+    nameRef.current.value = "";
+    descriptionRef.current.value = "";
   };
 
   return (
