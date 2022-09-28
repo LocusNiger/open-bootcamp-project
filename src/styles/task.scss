@@ -1,8 +1,12 @@
 .task-name {
   font-weight: bold;
-  color: cadetblue;
 }
 
 i {
   cursor: pointer;
+}
+
+.task-completed {
+  color: grey;
+  text-decoration: line-through;
 }

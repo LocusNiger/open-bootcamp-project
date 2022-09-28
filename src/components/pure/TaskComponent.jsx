@@ -44,24 +44,32 @@ const TaskComponent = ({ task, complete, deleteTask }) => {
   const taskCompletedIcon = () => {
     if (task.completed) {
       return (
-        <i className="bi-toggle-on" onClick={() => complete(task)} style={{ color: "green", fontSize: "1rem" }}></i>
+        <i
+          className="bi bi-check-square-fill"
+          onClick={() => complete(task)}
+          style={{ color: "green", fontSize: "1rem" }}
+        ></i>
       );
     } else {
       return (
-        <i className="bi-toggle-off" onClick={() => complete(task)} style={{ color: "grey", fontSize: "1rem" }}></i>
+        <i
+          className="bi bi-check-square"
+          onClick={() => complete(task)}
+          style={{ color: "grey", fontSize: "1rem" }}
+        ></i>
       );
     }
   };
 
   return (
-    <tr className="fw-normal border">
-      <td className="border">
-        <span className="px-2 task-name">{task.name}</span>
+    <tr className={task.completed ? "fw-normal border task-completed" : "fw-normal border"}>
+      <td className="border text-center">
+        <span className="task-name ">{task.name}</span>
       </td>
-      <td className="align-middle border">
+      <td className="text-center border">
         <span>{task.description}</span>
       </td>
-      <td className="border">{taskLevelBadge()}</td>
+      <td className="border text-center">{taskLevelBadge()}</td>
       <td className="d-flex justify-content-around align-items-center border">
         {taskCompletedIcon()}
         <i className="bi bi-trash" style={{ color: "tomato", fontSize: "1rem" }} onClick={() => deleteTask(task)}></i>

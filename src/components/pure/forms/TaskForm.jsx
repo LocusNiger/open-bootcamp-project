@@ -15,8 +15,8 @@ const TaskForm = ({ add }) => {
   };
 
   return (
-    <div className="">
-      <form className="d-flex flex-column justify-content-evenly border mt-4 p-3" onSubmit={addTask}>
+    <div className="p-3 col-10 m-0 row justify-content-center align-items-center">
+      <form className="d-flex flex-column border p-3 " onSubmit={addTask}>
         <p className="fs-5">New task</p>
         <input
           type="text"
