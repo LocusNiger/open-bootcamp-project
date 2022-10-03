@@ -1,12 +1,17 @@
 import { useRef } from "react";
+
+/* Models */
 import { LEVELS } from "../../../models/levels.enum";
 import { Task } from "../../../models/task.class";
 
 const TaskForm = ({ add }) => {
+  /* Refs para c/input */
   const nameRef = useRef("");
   const descriptionRef = useRef("");
   const levelRef = useRef(LEVELS);
+
   const addTask = (e) => {
+    /* crea nueva tarea y se la pasa a la función add */
     e.preventDefault();
     const newTask = new Task(nameRef.current.value, descriptionRef.current.value, false, levelRef.current.value);
     add(newTask);

@@ -1,15 +1,54 @@
-import { useState } from "react";
+import { Form, Formik, Field } from "formik";
+import * as Yup from "yup";
 
 export const LoginForm = () => {
-  /* Por defecto las credenciales están vacías */
-  const initialCredentials = [
-    {
-      user: "",
-      password: "",
-    },
-  ];
+  /* Valores iniciales para la prop del formik */
+  const initialCredentials = {
+    email: "",
+    password: "",
+  };
 
-  const [credentials, setCredentials] = useState(initialCredentials);
+  /* Esquema de validación para el formulario (YUP) */
+  const isRequired = "Required field"; /* mensajes de error */
+  const pwMsg = "At least 6 characters";
+  const emailMsg = "Invalid Email format";
+  const loginSchema = Yup.object().shape({
+    email: Yup.string().email(emailMsg).required(isRequired),
+    password: Yup.string().required(isRequired).min(6, pwMsg),
+  });
 
-  return <div></div>;
+  return (
+    <>
+      <h1>Login</h1>
+      <Formik
+        initialValues={initialCredentials}
+        validationSchema={loginSchema}
+        onSubmit={async (values) => {
+          await new Promise((res) => setTimeout(res, 1000));
+          alert(JSON.stringify(values, null, 2));
+          localStorage.setItem("credentials", values); /* guardo los datos en LS */
+        }}
+      >
+        {/* Props de formik */}
+        {(props) => {
+          const { values, touched, errors, isSubmitting, handleChange, handleBlur } = props;
+          return (
+            <Form>
+              <label htmlFor="email">Email</label>
+              <Field id="email" name="email" placeholder="example@email.com" type="email"></Field>
+              {/* Manejo de errores en input de email */}
+              {errors.email && <p>{errors.email}</p>}
+              <label>Password</label>
+              <Field id="password" name="password" placeholder="Your password..." type="password"></Field>
+              {errors.password && <p>{errors.password}</p>}
+
+              <button type="submit">Login</button>
+              {/* TODO: spinner para loading */}
+              {isSubmitting ? <p>Login is submitting</p> : null}
+            </Form>
+          );
+        }}
+      </Formik>
+    </>
+  );
 };
