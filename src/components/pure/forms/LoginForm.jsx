@@ -1,5 +1,6 @@
 import { Form, Formik, Field } from "formik";
 import * as Yup from "yup";
+import { useNavigate } from "react-router-dom";
 
 export const LoginForm = () => {
   /* Valores iniciales para la prop del formik */
@@ -7,6 +8,8 @@ export const LoginForm = () => {
     email: "",
     password: "",
   };
+
+  const navigate = useNavigate();
 
   /* Esquema de validación para el formulario (YUP) */
   const isRequired = "Required field"; /* mensajes de error */
@@ -26,7 +29,8 @@ export const LoginForm = () => {
         onSubmit={async (values) => {
           await new Promise((res) => setTimeout(res, 1000));
           alert(JSON.stringify(values, null, 2));
-          localStorage.setItem("credentials", values); /* guardo los datos en LS */
+          sessionStorage.setItem("credentials", values); /* guardo los datos en LS */
+          navigate("/");
         }}
       >
         {/* Props de formik */}
