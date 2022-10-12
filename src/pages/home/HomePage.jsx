@@ -5,8 +5,12 @@ const HomePage = () => {
   return (
     <>
       <h1>HomePage</h1>
-      <h2>Dashboard</h2>
-      <Link to="/tasks">Tasks</Link>
+      <div>
+        <Link to="/tasks">Tasks</Link>
+      </div>
+      <div>
+        <Link to="/dashboard">Dashboard</Link>
+      </div>
     </>
   );
 };

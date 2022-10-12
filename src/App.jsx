@@ -1,12 +1,19 @@
 import { Routes, Route, Link, Navigate } from "react-router-dom";
+import { useState } from "react";
+
+/* PAGES */
 import HomePage from "./pages/home/HomePage";
 import TasksPage from "./pages/tasks/TasksPage";
 import TaskDetailPage from "./pages/tasks/TaskDetailPage";
 import LoginPage from "./pages/auth/LoginPage";
 import RegisterPage from "./pages/auth/RegisterPage";
 import ProfilePage from "./pages/profile/ProfilePage";
+import DashboardPage from "./pages/dashboard/DashboardPage";
 import NotFoundPage from "./pages/404/NotFoundPage";
-import { useState } from "react";
+
+/* COMPONENTS */
+import Button from "@mui/material/Button";
+import Footer from "./components/pure/footer/Footer";
 
 function App() {
   const [logged, setLogged] = useState(false);
@@ -30,22 +37,25 @@ function App() {
         </Link>
       </nav>
       <h3>Are you logged? {logged ? <p>YES</p> : <p>NO</p>}</h3>
-      <button
+      <Button
+        variant="contained"
         onClick={() => {
           setLogged(!logged);
         }}
       >
         {logged ? "Logout" : "Login"}
-      </button>
+      </Button>
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/tasks" element={<TasksPage />} />
-        <Route path="/tasks/:id" element={<TaskDetailPage />} />
+        <Route path="/tasks" element={!logged ? <Navigate replace to={"/"} /> : <TasksPage />} />
+        <Route path="/tasks/:id" element={!logged ? <Navigate replace to={"/"} /> : <TaskDetailPage />} />
         <Route path="/login" element={logged ? <Navigate replace to={"/"} /> : <LoginPage />} />
         <Route path="/sign-up" element={<RegisterPage />} />
         <Route path="/profile" element={!logged ? <Navigate replace to={"/"} /> : <ProfilePage />} />
+        <Route path="/dashboard" element={!logged ? <Navigate replace to={"/"} /> : <DashboardPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
+      <Footer />
     </>
   );
 }
