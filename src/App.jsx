@@ -14,6 +14,7 @@ import NotFoundPage from "./pages/404/NotFoundPage";
 /* COMPONENTS */
 import Button from "@mui/material/Button";
 import Footer from "./components/pure/footer/Footer";
+import AxiosExample from "./components/pure/AxiosExample";
 
 function App() {
   const [logged, setLogged] = useState(false);
@@ -37,6 +38,7 @@ function App() {
         </Link>
       </nav>
       <h3>Are you logged? {logged ? <p>YES</p> : <p>NO</p>}</h3>
+      <AxiosExample />
       <Button
         variant="contained"
         onClick={() => {
