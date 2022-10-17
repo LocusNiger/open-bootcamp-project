@@ -9,6 +9,5 @@ export default function getRandomUser() {
       console.log("Token generated");
       sessionStorage.setItem("token", res.token);
     })
-    .catch((err) => console.log(err))
-    .finally(() => console.log("Process ended"));
+    .catch((err) => console.log(err));
 }
