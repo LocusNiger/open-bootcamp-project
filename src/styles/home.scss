@@ -1,0 +1,32 @@
+.home-container {
+  padding: 1rem;
+}
+.titles-container {
+  text-align: end;
+  h1 {
+    font-weight: 400;
+  }
+  h2 {
+    font-weight: 400;
+  }
+  span {
+    font-weight: 600;
+    background-color: #fa7f01;
+    padding: 0.2rem;
+    color: #f3eced;
+  }
+}
+
+.start-btn-container {
+  display: flex;
+  margin-top: 1.8rem;
+  justify-content: end;
+  .start-btn {
+    padding: 0.7rem 2rem;
+    font-weight: 600;
+    border-radius: 0.4rem;
+    color: #f3eced;
+    background-color: #fa7f01;
+    text-decoration: none;
+  }
+}

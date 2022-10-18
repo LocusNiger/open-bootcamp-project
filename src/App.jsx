@@ -1,8 +1,8 @@
-import { Routes, Route, Link, Navigate } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import { useState } from "react";
 
 /* PAGES */
-import HomePage from "./pages/home/HomePage";
+import HomeWithoutLogin from "./pages/home/HomeWithoutLogin";
 import TasksPage from "./pages/tasks/TasksPage";
 import TaskDetailPage from "./pages/tasks/TaskDetailPage";
 import LoginPage from "./pages/auth/LoginPage";
@@ -15,40 +15,26 @@ import NotFoundPage from "./pages/404/NotFoundPage";
 import Button from "@mui/material/Button";
 import Footer from "./components/pure/footer/Footer";
 import AxiosCRUDExample from "./components/pure/AxiosCRUDExample";
+import NavbarNoLogged from "./components/pure/navbar/NavbarNoLogged";
+import NavbarLogged from "./components/pure/navbar/NavbarLogged";
+import HomeWithLogin from "./pages/home/HomeWithLogin";
 
 function App() {
   const [logged, setLogged] = useState(false);
   return (
     <>
-      <nav className="navbar navbar-dark bg-secondary">
-        <Link to="/" className="text-light">
-          Home
-        </Link>
-        <Link to="/tasks" className="text-light">
-          Tasks
-        </Link>
-        <Link to="/login" className="text-light">
-          Login
-        </Link>
-        <Link to="/sign-up" className="text-light">
-          Sign up
-        </Link>
-        <Link to="/profile" className="text-light">
-          Profile
-        </Link>
-      </nav>
-      <h3>Are you logged? {logged ? <p>YES</p> : <p>NO</p>}</h3>
-      <AxiosCRUDExample />
-      <Button
+      {logged ? <NavbarLogged /> : <NavbarNoLogged />}
+      {/* <h3>Are you logged? {logged ? <p>YES</p> : <p>NO</p>}</h3> */}
+      {/*  <Button
         variant="contained"
         onClick={() => {
           setLogged(!logged);
         }}
       >
         {logged ? "Logout" : "Login"}
-      </Button>
+      </Button> */}
       <Routes>
-        <Route path="/" element={<HomePage />} />
+        <Route path="/" element={logged ? <HomeWithLogin logged={logged} /> : <HomeWithoutLogin logged={logged} />} />
         <Route path="/tasks" element={!logged ? <Navigate replace to={"/"} /> : <TasksPage />} />
         <Route path="/tasks/:id" element={!logged ? <Navigate replace to={"/"} /> : <TaskDetailPage />} />
         <Route path="/login" element={logged ? <Navigate replace to={"/"} /> : <LoginPage />} />
