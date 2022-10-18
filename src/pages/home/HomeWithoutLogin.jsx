@@ -14,7 +14,9 @@ const HomeWithoutLogin = (props) => {
           </h2>
         </div>
         <div className="start-btn-container">
-          <Link className="start-btn ">Get started!</Link>
+          <Link to="/login" className="start-btn">
+            Get started!
+          </Link>
         </div>
       </div>
     </>
