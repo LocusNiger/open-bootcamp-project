@@ -12,9 +12,7 @@ import DashboardPage from "./pages/dashboard/DashboardPage";
 import NotFoundPage from "./pages/404/NotFoundPage";
 
 /* COMPONENTS */
-import Button from "@mui/material/Button";
 import Footer from "./components/pure/footer/Footer";
-import AxiosCRUDExample from "./components/pure/AxiosCRUDExample";
 import NavbarNoLogged from "./components/pure/navbar/NavbarNoLogged";
 import NavbarLogged from "./components/pure/navbar/NavbarLogged";
 import HomeWithLogin from "./pages/home/HomeWithLogin";

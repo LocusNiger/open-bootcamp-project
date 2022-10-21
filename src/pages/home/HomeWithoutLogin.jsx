@@ -18,6 +18,9 @@ const HomeWithoutLogin = (props) => {
             Get started!
           </Link>
         </div>
+        <div className="img-container">
+          <img src="./img/Man-taking-note.png" />
+        </div>
       </div>
     </>
   );

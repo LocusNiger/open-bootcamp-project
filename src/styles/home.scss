@@ -16,7 +16,6 @@
     color: #f3eced;
   }
 }
-
 .start-btn-container {
   display: flex;
   margin-top: 1.8rem;
@@ -28,5 +27,11 @@
     color: #f3eced;
     background-color: #fa7f01;
     text-decoration: none;
+  }
+}
+.img-container {
+  margin-top: 1.5rem;
+  img {
+    max-width: 100%;
   }
 }
