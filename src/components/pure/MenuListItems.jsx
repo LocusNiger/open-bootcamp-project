@@ -7,10 +7,10 @@ export default function MenuListItems() {
         <Link className="footer-btn" to="/dashboard">
           Dashboard
         </Link>
-        <Link className="footer-btn" to="/tasks">
+        <Link className="footer-btn ml-1.5" to="/tasks">
           Tasks
         </Link>
-        <Link className="footer-btn" to="/profile">
+        <Link className="footer-btn ml-1.5" to="/profile">
           Profile
         </Link>
       </div>
