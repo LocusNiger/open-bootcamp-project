@@ -4,7 +4,7 @@ import "../../../styles/navbar.scss";
 export default function NavbarNoLogged() {
   return (
     <>
-      <nav className="navbar navbar-expand-lg d-flex justify-content-end me-2 p-2 nav-style">
+      <nav className="flex justify-end mr-2 p-2 w-full">
         <Link to="/login" className="ms-3 nav-btn">
           Login
         </Link>

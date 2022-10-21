@@ -4,7 +4,7 @@ import "../../../styles/navbar.scss";
 export default function NavbarLogged() {
   return (
     <>
-      <nav className="navbar navbar-expand-lg d-flex justify-content-end me-2 p-2 nav-style">
+      <nav className="flex flex-col justify-end mr-2 p-2">
         <Link to="/" className="ms-3 nav-btn">
           Home
         </Link>

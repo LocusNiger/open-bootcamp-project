@@ -1,6 +1,7 @@
 import { Form, Formik, Field } from "formik";
 import * as Yup from "yup";
 import { useNavigate } from "react-router-dom";
+import "../../../styles/login.scss";
 
 export const LoginForm = () => {
   /* Valores iniciales para la prop del formik */
@@ -21,8 +22,8 @@ export const LoginForm = () => {
   });
 
   return (
-    <>
-      <h1>Login</h1>
+    <div className="flex flex-col border border-black gap-3 items-center justify-center">
+      <h1 className="text-2xl font-semibold">Login</h1>
       <Formik
         initialValues={initialCredentials}
         validationSchema={loginSchema}
@@ -38,14 +39,17 @@ export const LoginForm = () => {
           const { values, touched, errors, isSubmitting, handleChange, handleBlur } = props;
           return (
             <Form>
-              <label htmlFor="email">Email</label>
-              <Field id="email" name="email" placeholder="example@email.com" type="email"></Field>
-              {/* Manejo de errores en input de email */}
-              {errors.email && <p>{errors.email}</p>}
-              <label>Password</label>
-              <Field id="password" name="password" placeholder="Your password..." type="password"></Field>
-              {errors.password && <p>{errors.password}</p>}
-
+              <div>
+                <label htmlFor="email">Email</label>
+                <Field id="email" name="email" placeholder="example@email.com" type="email"></Field>
+                {/* Manejo de errores en input de email */}
+                {errors.email && <p>{errors.email}</p>}
+              </div>
+              <div>
+                <label>Password</label>
+                <Field id="password" name="password" placeholder="Your password..." type="password"></Field>
+                {errors.password && <p>{errors.password}</p>}
+              </div>
               <button type="submit">Login</button>
               {/* TODO: spinner para loading */}
               {isSubmitting ? <p>Login is submitting</p> : null}
@@ -53,6 +57,6 @@ export const LoginForm = () => {
           );
         }}
       </Formik>
-    </>
+    </div>
   );
 };

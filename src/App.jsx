@@ -1,5 +1,6 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 import { useState } from "react";
+import "./index.css";
 
 /* PAGES */
 import HomeWithoutLogin from "./pages/home/HomeWithoutLogin";
