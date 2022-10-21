@@ -22,41 +22,43 @@ export const LoginForm = () => {
   });
 
   return (
-    <div className="flex flex-col border border-black gap-3 items-center justify-center">
-      <h1 className="text-2xl font-semibold">Login</h1>
-      <Formik
-        initialValues={initialCredentials}
-        validationSchema={loginSchema}
-        onSubmit={async (values) => {
-          await new Promise((res) => setTimeout(res, 1000));
-          alert(JSON.stringify(values, null, 2));
-          sessionStorage.setItem("credentials", values); /* guardo los datos en LS */
-          navigate("/");
-        }}
-      >
-        {/* Props de formik */}
-        {(props) => {
-          const { values, touched, errors, isSubmitting, handleChange, handleBlur } = props;
-          return (
-            <Form>
-              <div>
-                <label htmlFor="email">Email</label>
-                <Field id="email" name="email" placeholder="example@email.com" type="email"></Field>
-                {/* Manejo de errores en input de email */}
-                {errors.email && <p>{errors.email}</p>}
-              </div>
-              <div>
-                <label>Password</label>
-                <Field id="password" name="password" placeholder="Your password..." type="password"></Field>
-                {errors.password && <p>{errors.password}</p>}
-              </div>
-              <button type="submit">Login</button>
-              {/* TODO: spinner para loading */}
-              {isSubmitting ? <p>Login is submitting</p> : null}
-            </Form>
-          );
-        }}
-      </Formik>
+    <div>
+      <div className="flex flex-col border border-black gap-3 items-center justify-center">
+        <h1 className="text-2xl font-semibold">Login</h1>
+        <Formik
+          initialValues={initialCredentials}
+          validationSchema={loginSchema}
+          onSubmit={async (values) => {
+            await new Promise((res) => setTimeout(res, 1000));
+            alert(JSON.stringify(values, null, 2));
+            sessionStorage.setItem("credentials", values); /* guardo los datos en LS */
+            navigate("/");
+          }}
+        >
+          {/* Props de formik */}
+          {(props) => {
+            const { values, touched, errors, isSubmitting, handleChange, handleBlur } = props;
+            return (
+              <Form>
+                <div>
+                  <label htmlFor="email">Email</label>
+                  <Field id="email" name="email" placeholder="example@email.com" type="email"></Field>
+                  {/* Manejo de errores en input de email */}
+                  {errors.email && <p>{errors.email}</p>}
+                </div>
+                <div>
+                  <label>Password</label>
+                  <Field id="password" name="password" placeholder="Your password..." type="password"></Field>
+                  {errors.password && <p>{errors.password}</p>}
+                </div>
+                <button type="submit">Login</button>
+                {/* TODO: spinner para loading */}
+                {isSubmitting ? <p>Login is submitting</p> : null}
+              </Form>
+            );
+          }}
+        </Formik>
+      </div>
     </div>
   );
 };
