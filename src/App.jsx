@@ -24,14 +24,13 @@ function App() {
     <>
       {logged ? <NavbarLogged /> : <NavbarNoLogged />}
       {/* <h3>Are you logged? {logged ? <p>YES</p> : <p>NO</p>}</h3> */}
-      {/*  <Button
-        variant="contained"
+      <button
         onClick={() => {
           setLogged(!logged);
         }}
       >
         {logged ? "Logout" : "Login"}
-      </Button> */}
+      </button>
       <Routes>
         <Route path="/" element={logged ? <HomeWithLogin logged={logged} /> : <HomeWithoutLogin logged={logged} />} />
         <Route path="/tasks" element={!logged ? <Navigate replace to={"/"} /> : <TasksPage />} />
