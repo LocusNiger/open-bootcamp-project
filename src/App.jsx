@@ -4,6 +4,7 @@ import "./index.css";
 
 /* PAGES */
 import HomeWithoutLogin from "./pages/home/HomeWithoutLogin";
+import HomeWithLogin from "./pages/home/HomeWithLogin";
 import TasksPage from "./pages/tasks/TasksPage";
 import TaskDetailPage from "./pages/tasks/TaskDetailPage";
 import LoginPage from "./pages/auth/LoginPage";
@@ -16,10 +17,9 @@ import NotFoundPage from "./pages/404/NotFoundPage";
 import Footer from "./components/pure/footer/Footer";
 import NavbarNoLogged from "./components/pure/navbar/NavbarNoLogged";
 import NavbarLogged from "./components/pure/navbar/NavbarLogged";
-import HomeWithLogin from "./pages/home/HomeWithLogin";
 
 function App() {
-  const [logged, setLogged] = useState(false);
+  const [logged, setLogged] = useState(true);
   return (
     <>
       {logged ? <NavbarLogged /> : <NavbarNoLogged />}

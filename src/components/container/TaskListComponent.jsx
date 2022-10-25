@@ -1,5 +1,4 @@
-import { useEffect } from "react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 /* Models */
 import { LEVELS } from "../../models/levels.enum";
@@ -7,6 +6,7 @@ import { Task } from "../../models/task.class";
 /* Components */
 import TaskForm from "../pure/forms/TaskForm";
 import TaskComponent from "../pure/TaskComponent";
+import TaskTableComponent from "../pure/TaskTableComponent";
 
 /* Componente contenedor de lista de tareas */
 const TaskListComponent = () => {
@@ -54,12 +54,10 @@ const TaskListComponent = () => {
 
   return (
     <>
-      <div className="container-lg col-8 mt-5">
-        <div className="card">
+      <div className="border border-red-500">
+        <div className="">
           {/* card header (title) */}
-          <div className="card-header p-3 col-12 text-center">
-            <h2>Your task:</h2>
-          </div>
+
           {/* card body (content) */}
           <div className="card-body card-styles" data-mdb-perfect-scrollbar="true">
             {tasks.length > 0 ? (
@@ -98,6 +96,7 @@ const TaskListComponent = () => {
           </div>
         </div>
       </div>
+      <TaskTableComponent />
     </>
   );
 };
