@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 /* Models */
 import { LEVELS } from "../../models/levels.enum";
 import { Task } from "../../models/task.class";
+
 /* Components */
 import TaskForm from "../pure/forms/TaskForm";
 import TaskComponent from "../pure/TaskComponent";
@@ -38,7 +39,6 @@ const TaskListComponent = () => {
 
   /* Función para eliminar la tarea que recibe */
   const deleteTask = (task) => {
-    console.log("Tarea eliminada");
     const index = tasks.indexOf(task); /* busco el índice de la tarea a modificar */
     const tempTasks = [...tasks]; /* arreglo temporal para hacer las modificaciones */
     tempTasks.splice(index, 1); /* elimino la tarea en el arreglo temporal */
@@ -59,9 +59,9 @@ const TaskListComponent = () => {
           {/* card header (title) */}
 
           {/* card body (content) */}
-          <div className="card-body card-styles" data-mdb-perfect-scrollbar="true">
+          <div className="" data-mdb-perfect-scrollbar="true">
             {tasks.length > 0 ? (
-              <div className="p-3 col-12 m-0 row">
+              <div className="p-3">
                 <table>
                   <thead>
                     <tr>
@@ -88,7 +88,7 @@ const TaskListComponent = () => {
                 </table>
               </div>
             ) : (
-              <div className="p-3 col-12 m-0 row text-center">
+              <div className="p-3">
                 <h4>You are up to date with your tasks!</h4>
               </div>
             )}
