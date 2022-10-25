@@ -6,7 +6,7 @@ import { Task } from "../../models/task.class";
 import "../../styles/task.scss";
 
 /* Componente que renderiza la tarea que le pasan por prop */
-const TaskComponent = ({ task, complete, deleteTask, key }) => {
+const TaskComponent = ({ task, complete, deleteTask, index }) => {
   /* Cada vez que se modifique una tarea, se ejecutara el useEffect */
   useEffect(() => {
     console.log("Created task");
@@ -101,7 +101,7 @@ const TaskComponent = ({ task, complete, deleteTask, key }) => {
             clipRule="evenodd"
           />
         </svg>
-        <Link to={`/tasks/${task.key}`}>View</Link>
+        <Link to={`/tasks/${task.index}`}>View</Link>
       </td>
     </tr>
   );

@@ -76,7 +76,9 @@ export default function TaskTableComponent() {
           <tbody className="divide-y divide-gray-200">
             {/* Le paso por props la tarea a mostrar. TaskComponent => comp. presentacional */}
             {tasks.map((task, index) => {
-              return <TaskComponent key={index} task={task} complete={completeTask} deleteTask={deleteTask} />;
+              return (
+                <TaskComponent key={index} index={index} task={task} complete={completeTask} deleteTask={deleteTask} />
+              );
             })}
           </tbody>
         </table>
